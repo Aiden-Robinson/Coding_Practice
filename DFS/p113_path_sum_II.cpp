@@ -40,5 +40,5 @@ private:
   }
 };
 
-// Time complexity O(N * H)
+// Time complexity O(N * H) where H is the height of the tree
 // Space complexity O(H^2)
