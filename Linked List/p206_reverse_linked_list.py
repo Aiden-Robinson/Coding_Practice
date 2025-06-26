@@ -15,7 +15,7 @@ class Solution:
             prev=cur
             cur=nxt
         
-        return prev
+        return prev #the new head of the reversed linked list
 
 #time complexity O(N)
 #space complexity O(N)
