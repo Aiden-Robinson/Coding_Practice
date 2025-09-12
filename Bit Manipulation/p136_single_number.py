@@ -3,7 +3,7 @@ class Solution:
         res=0
 
         for num in nums:
-            res ^=num
+            res ^=num #XOR all the numbers together, the numbers that appear twice will cancel out, leaving only the number that appears once
         return res
     
     #time complexity O(N)
