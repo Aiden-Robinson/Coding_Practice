@@ -1,0 +1,18 @@
+class Solution:
+    #monotonic stack solution
+    def finalPrices(self, prices: List[int]) -> List[int]:
+        
+        res=[p for p in prices]
+
+        stack=[]
+
+        for i in range(len(prices)):
+            while stack and prices[stack[-1]]>=prices[i]:
+                j=stack.pop()
+                res[j]-=prices[i]
+            stack.append(i)
+        
+        return res
+
+#time complexity O(N)
+#space complexity O(N)
