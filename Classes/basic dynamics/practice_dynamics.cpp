@@ -8,7 +8,10 @@ struct Command {
   double duration;      // seconds
 };
 
-std::pair<double, double> simulate(const std::vector<Command>& commands) {
+std::pair<double, double> simulate(
+    const std::vector<Command>&
+        commands) {  // & makes it a reference so we don't have to copy the
+                     // entire vecotr over in main
   double position = 0.0;
   double velocity = 0.0;
 
