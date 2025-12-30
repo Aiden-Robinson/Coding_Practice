@@ -1,35 +1,34 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        hashmap=defaultdict(list)
+        for a,b in prerequisites:
+            hashmap[a].append(b)
         
-        prereq={c:[] for c in range(numCourses)}
-      
+        print(hashmap)
 
-        seen= set()
+        visiting=set()
+        visited=set()
 
-        for crs, pre in prerequisites:
-            prereq[crs].append(pre)
-
-        def dfs(crs):
-            if prereq[crs]==[]: #no prerequisites to take
+        def dfs(num):
+            if num in visiting:
+                return False
+            if num in visited:
                 return True
-            if crs in seen:
-                return False
             
-            seen.add(crs)
-            
-            for pre in prereq[crs]:
-                if not dfs(pre): 
+            visiting.add(num)
+            for val in hashmap[num]:
+                if not dfs(val):
                     return False
+            
+            visiting.remove(num)
+            visited.add(num)
                 
-            seen.remove(crs)
-            prereq[crs]=[] #marking it as valid
             return True
-
-        for crs in range(numCourses):
-            if not dfs(crs):
+        for c in range(numCourses):
+            if not dfs(c):
                 return False
-        
         return True
+
 
 
 #time complex O(V+E)
